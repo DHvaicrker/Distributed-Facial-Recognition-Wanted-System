@@ -1,0 +1,125 @@
+ScreenManager:
+
+
+    LoginScreen:
+        id: login
+<LoginScreen>:
+    name:  "login"
+    id: login
+    MDFloatLayout:
+
+        Image:
+            source: r"gui/images/main_background.jpg"
+            pos: self.pos
+            size_hint: None, None
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+
+        Image:
+            source: r"CAPTCHA.png"
+            pos_hint : {"center_x":.5,"center_y":.7}
+            size_hint: 0.4, 0.4
+        MDLabel:
+
+            text:" Welcome to Global-Watch"
+            pos_hint : {"center_x":.5,"center_y":.9}
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            size_hint: 0.5,.1
+            font_size: app.get_font_size("login")*2
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+
+
+        MDLabel:
+            text: "captcha:"
+            pos_hint : {"center_x":.15,"center_y":.55}
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            size_hint: .2,.1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+
+        MDLabel:
+
+            text: "camera location:\nenter the city name"
+            pos_hint : {"center_x":.15,"center_y":.4}
+            theme_text_color: "Custom"
+            size_hint: .3,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+        MDTextField :
+            name:captcha
+            line_color: 1, 1, 1, 1
+            id : captcha
+            hint_text : "captcha"
+            pos_hint : {"center_x":.45,"center_y":.55}
+            icon_right: "robot"
+            line_color_normal: "grey"
+            size_hint: .5,.12
+            font_size: app.get_font_size("login")
+
+
+
+            helper_text: "Wrong ID or Password"
+            helper_text_mode: "on_error"
+
+         #PASSWORD:
+        MDTextField:
+            name:loc
+            id : loc
+            hint_text : "location"
+            color_mode: 'custom'
+            icon_right: "map"
+
+            pos_hint : {"center_x":.5,"center_y":.4}
+            line_color_normal: "grey"
+            size_hint: .4,.12
+            font_size: app.get_font_size("login")
+
+            helper_text: "Wrong ID or Password"
+            helper_text_mode: "on_error"
+
+
+
+
+
+
+        MDRectangleFlatIconButton :
+            icon: "application-import"
+            theme_text_color: "Custom"
+            text_color: "white"
+            line_color: "white"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+            font_size: app.get_font_size("login")
+
+            text : 'connect to server'
+            pos_hint : {"center_x":.5,"center_y":.25}
+            size_hint: .2,.1
+            on_press:
+
+                app.login()
+
+        MDRectangleFlatIconButton :
+            icon: "application-export"
+            theme_text_color: "Custom"
+            text_color: "white"
+            line_color: "white"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+            font_size: app.get_font_size("login")
+
+            text : 'Exit'
+            pos_hint : {"center_x":.5,"center_y":0.1}
+            size_hint: .2,.1
+            on_press:
+
+                app.close()
+
+
+
+

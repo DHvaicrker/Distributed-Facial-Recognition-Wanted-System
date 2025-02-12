@@ -1,0 +1,768 @@
+ScreenManager:
+
+
+    LoginScreen:
+        id: login
+        name: "login"
+
+
+    Map:
+        id: map
+        name:"Map"
+
+    AddWantedScreen:
+        id: AddWantedScreen
+        name: "AddWantedScreen"
+
+    HelpScreen:
+        name: "HelpScreen"
+
+    TakePicture:
+        id: TakePicture
+        name:"TakePicture"
+
+    CreateAccount:
+        name:"CreateAccount"
+
+    DeleteWanted:
+        id: DeleteWanted
+        name:"DeleteWanted"
+
+    WantedsList:
+        id: WantedsList
+        name:"WantedsList"
+
+
+<WantedsList>:
+    name:"WantedsList"
+    MDFloatLayout:
+        MDLabel:
+
+            text: "All of the wanted "
+            pos_hint : {"center_x":.7,"center_y":.93}
+            theme_text_color: "Custom"
+            size_hint: .8,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")*2
+            font_name: "gui/fonts/create_acc1.ttf"
+        ScrollView:
+            id: scrollview
+            do_scroll_y:True
+            do_scroll_x:False
+            size_hint:0.9,0.9
+            pos_hint : {"center_x":.5,"center_y":.5}
+            GridLayout:
+                id: layout
+                size_hint_y: None
+                height: app.get_resolution()[1]
+                cols: 1
+
+
+
+        MDIconButton:
+            icon: "map"
+            pos_hint: {"center_x": .05, "center_y": .9}
+            on_press:
+                app.return_main_menu()
+
+
+
+
+
+<DeleteWanted>:
+    name:"DeleteWanted"
+
+    MDFloatLayout:
+
+        MDLabel:
+
+            text: "Remove criminal "
+            pos_hint : {"center_x":.7,"center_y":.93}
+            theme_text_color: "Custom"
+            size_hint: .8,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")*2
+            font_name: "gui/fonts/create_acc1.ttf"
+        MDLabel:
+            text: "full name:"
+            pos_hint : {"center_x":.2,"center_y":.55}
+            theme_text_color: "Custom"
+            size_hint: .2,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/create_acc1.ttf"
+
+        MDLabel:
+            id: status_label
+            text: ""
+            pos_hint : {"center_x":.5,"center_y":.4}
+            theme_text_color: "Custom"
+            text_color: "red"
+            size_hint: 0.5,.1
+
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/create_acc1.ttf"
+
+        MDTextField:
+            id : name
+            normal_color: 0.3,0.2,1,1
+		    line_color: (0, 0, 0, 0)
+
+            pos_hint : {"center_x":.5,"center_y":.55}
+            icon_right:"account"
+            #line_color_normal: "grey"
+            size_hint: .4,.2
+            font_size: app.get_font_size("login")*2
+        MDIconButton:
+            theme_text_color: "Custom"
+            icon_color: "white"
+            icon: "map"
+            pos_hint: {"center_x": .05, "center_y": .9}
+            on_press:
+                root.manager.transition.direction = 'down'
+                root.manager.transition.duration = 1
+                root.manager.current = 'Map'
+                root.ids.status_label.text = ""
+                root.ids.name.text =""
+
+
+
+
+        MDRectangleFlatIconButton :
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            line_color: "red"
+            theme_icon_color: "Custom"
+            icon_color: "red"
+            font_name: "gui/fonts/create_acc1.ttf"
+            font_size: app.get_font_size("wanted_label")
+            icon:'account-remove'
+            text : 'Remove'
+            pos_hint : {"center_x":.5,"center_y":0.2}
+            size_hint: .1,.03
+            on_press:
+                app.remove_criminal(root.ids.name.text)
+
+
+
+
+<CreateAccount>:
+    name: "CreateAccount"
+    MDFloatLayout:
+
+        Image:
+            source: r"gui\images\bk6.jpg"
+            pos: self.pos
+            size_hint: None, None
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+        MDLabel:
+
+            text: "Create an account"
+            pos_hint : {"center_x":.7,"center_y":.93}
+            theme_text_color: "Custom"
+            size_hint: .8,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")*2
+            font_name: "gui/fonts/create_acc1.ttf"
+
+        MDLabel:
+
+            text: "Enter a security code and the system will generate an id for you.\nThe password need to be 8-12 chars"
+            pos_hint : {"center_x":.5,"center_y":.7}
+            theme_text_color: "Custom"
+            size_hint: .4,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/create_acc1.ttf"
+
+
+        MDTextField :
+
+            id : security_code
+            hint_text : "security code"
+            pos_hint : {"center_x":.5,"center_y":.55}
+            icon_right: "lock"
+            line_color_normal: "grey"
+            size_hint: .4,.12
+            font_size: app.get_font_size("login")
+            password: True
+            max_text_length: 12
+            helper_text: "Wrong security code"
+            helper_text_mode: "on_error"
+
+
+
+
+        MDLabel:
+
+            text: "password:"
+            pos_hint : {"center_x":.19,"center_y":.45}
+            theme_text_color: "Custom"
+            size_hint: .2,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/create_acc1.ttf"
+
+        MDTextField :
+            id : psw
+            hint_text : "password"
+            pos_hint : {"center_x":.5,"center_y":.45}
+            icon_right: "eye-off"
+            line_color_normal: "grey"
+            size_hint: .4,.12
+            font_size: app.get_font_size("login")
+            password: True
+            max_text_length: 12
+
+            helper_text: "Wrong Password"
+            helper_text_mode: "on_error"
+        MDLabel:
+
+            text: "confirm password:"
+            pos_hint : {"center_x":.19,"center_y":.3}
+            theme_text_color: "Custom"
+            size_hint: .2,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/create_acc1.ttf"
+
+
+        MDTextField :
+            id : psw_confirm
+            hint_text : "confirm password"
+            pos_hint : {"center_x":.5,"center_y":.3}
+            icon_right: "eye-off"
+            line_color_normal: "grey"
+            size_hint: .4,.12
+            font_size: app.get_font_size("login")
+            password: True
+            max_text_length: 12
+            helper_text: "Wrong ID or Password"
+            helper_text_mode: "on_error"
+
+        MDLabel:
+
+            text: "Your id:"
+            pos_hint : {"center_x":.19,"center_y":.2}
+            theme_text_color: "Custom"
+            size_hint: .2,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/create_acc1.ttf"
+
+
+        MDLabel:
+            id: generated_id
+            text: ""
+            pos_hint : {"center_x":.5,"center_y":.2}
+            theme_text_color: "Custom"
+            size_hint: 0.6,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/create_acc1.ttf"
+
+
+        MDRectangleFlatIconButton :
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            line_color: "white"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+            font_size: app.get_font_size("wanted_label")
+
+            text : 'Create'
+            pos_hint : {"center_x":.5,"center_y":0.04}
+            size_hint: .1,.03
+            on_press:
+                root.Add_account()
+
+
+        MDIconButton:
+            theme_text_color: "Custom"
+            icon_color: "white"
+            icon: "arrow-left-top"
+            pos_hint: {"center_x": .05, "center_y": .9}
+            on_press:
+                root.clear()
+                root.manager.transition.direction = 'down'
+                root.manager.transition.duration = 1
+                root.manager.current = 'login'
+
+
+
+
+<LoginScreen>:
+    name:  "login"
+    id: login
+    MDFloatLayout:
+
+        Image:
+            source: r"gui\images\bk4.jpg"
+            pos: self.pos
+            size_hint: None, None
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+
+        Image:
+            source: r"gui\images\agent_login_2.png"
+            pos_hint : {"center_x":.5,"center_y":.8}
+            size_hint: 0.4, 0.4
+
+        MDLabel:
+            name:"time"
+            id: time
+            text:
+            pos_hint : {"x":0,"y":0.92}
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            size_hint: .3,.1
+            font_size: app.get_font_size("login")/2
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+        MDLabel:
+
+            text:"Welcome to Global-Watch"
+            pos_hint : {"x":0.8,"y":0.92}
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            size_hint: .3,.1
+            font_size: app.get_font_size("login")/2
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+        MDLabel:
+            text: "AGENT ID:"
+            pos_hint : {"center_x":.2,"center_y":.55}
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            size_hint: .2,.1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+
+        MDLabel:
+
+            text: "PASSWORD:"
+            pos_hint : {"center_x":.19,"center_y":.4}
+            theme_text_color: "Custom"
+            size_hint: .2,.1
+            text_color: 1, 1, 1, 1
+            font_size: app.get_font_size("login")
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+        MDTextField :
+            name:usrn
+            line_color: 1, 1, 1, 1
+            id : usrn
+            hint_text : "id"
+            pos_hint : {"center_x":.5,"center_y":.55}
+            icon_right: "account"
+            line_color_normal: "grey"
+            size_hint: .4,.12
+            font_size: app.get_font_size("login")
+            password: True
+            max_text_length: 12
+
+            helper_text: "Wrong ID or Password"
+            helper_text_mode: "on_error"
+
+         #PASSWORD:
+        MDTextField:
+            name:psw
+            max_text_length: 12
+            id : psw
+
+            color_mode: 'custom'
+            icon_right: "eye-off"
+            hint_text : "password"
+            pos_hint : {"center_x":.5,"center_y":.4}
+            line_color_normal: "grey"
+            size_hint: .4,.12
+            font_size: app.get_font_size("login")
+
+            helper_text: "Wrong ID or Password"
+            helper_text_mode: "on_error"
+
+
+            password: True
+
+          #LOGIN BUTTON:
+        MDRectangleFlatIconButton :
+            icon: "application-import"
+            theme_text_color: "Custom"
+            text_color: "white"
+            line_color: "white"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+            font_size: app.get_font_size("login")
+
+            text : 'login'
+            pos_hint : {"center_x":.62,"center_y":.25}
+            size_hint: .2,.1
+            on_press:
+
+                root.login()
+
+
+
+
+        MDRectangleFlatIconButton :
+            icon: "account-plus"
+            theme_text_color: "Custom"
+            text_color: "white"
+            line_color: "white"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+            font_size: app.get_font_size("login")
+
+            text : 'Create an account'
+            pos_hint : {"center_x":.5,"center_y":.1}
+            size_hint: .2,.1
+            on_press:
+
+                root.manager.transition.direction = 'up'
+                root.manager.transition.duration = 1
+                root.manager.current = 'CreateAccount'
+
+        MDRectangleFlatIconButton:
+            icon: "application-export"
+            text: "Exit"
+            theme_text_color: "Custom"
+            text_color: "white"
+            line_color: "white"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            size_hint: .2,.1
+            font_name: "gui/fonts/HighlandGothicFLF-Bold.ttf"
+            font_size: app.get_font_size("login")
+            pos_hint: {"center_x": .38, "center_y": .25}
+            on_press:
+                app.closing_app()
+
+
+
+
+
+<Map>:
+    name:"Map"
+    MapView:
+        id:map_view
+        lat: 32.5
+        lon: 35
+        zoom: 10
+        double_tap_zoom: False
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            id: top_bar
+            title: "Map of Wanteds"
+            right_action_items: [["music-circle", lambda x: root.play_song(),"play song"],["lock",lambda x:root.conn_secure(),"connection is secure"]]
+
+
+        MDLabel:
+            text: ""
+            halign: "center"
+    MDFloatingActionButtonSpeedDial:
+        #icon: "pencil"
+        label_text_color:"white"
+        id: speed_dial
+        data: app.tool_bar
+        root_button_anim: True
+        hint_animation: True
+        right_pad: True
+
+        bg_color_stack_button: 0,0,0,1
+        color_icon_stack_button:"orange"
+
+        bg_color_root_button: 0,0,0,1
+        color_icon_root_button:1,1,1,1
+
+        bg_hint_color:0,0,0,1
+
+
+
+
+
+
+<HelpScreen>:
+    name: "HelpScreen"
+    MDFloatLayout:
+        #md_bg_color: 237/255,244/255,255/255,0.58
+        ScrollView:
+            do_scroll_y:True
+            do_scroll_x:False
+            size_hint:0.8,0.8
+            pos_hint : {"center_x":.5,"center_y":.5}
+            MDBoxLayout:
+
+                orientation: "vertical"
+                size_hint_y: None
+                height: app.get_resolution()[1]
+                MDLabel:
+                    text: "help"
+                    theme_text_color: "Primary"
+                    #text_color: 172/255,40/255,0,0.9
+                    pos_hint: {"center_x":.8}
+                    font_size: app.get_font_size("wanted")
+                    font_name: "gui/fonts/WANTED2.ttf"
+
+                MDLabel:
+                    text: "Welcome to Global-Watch. In the main screen you can see a map with all of the wanted who was detected. In addition, by clicking on the + icon in the bottom right corner a menu will. inside that menu you have all of the options which the app has to offer: ADD Wanted, Delete Wanted, Watch all of the current wanted and  an Exit button."
+
+
+                    theme_text_color: "Primary"
+                    #text_color: 34/255,28/255,16/255,0.88
+                    font_size: app.get_font_size("wanted_label")
+                    font_name: "gui/fonts/WANTED2.ttf"
+
+                MDLabel:
+                    text: "Global-Watch is a system that can track a wanted and present is current location in the world by using a  net of cameras all around the world and face recognition. "
+
+                    theme_text_color: "Primary"
+                    #text_color: 34/255,28/255,16/255,0.88
+                    font_size: app.get_font_size("wanted_label")
+                    font_name: "gui/fonts/WANTED2.ttf"
+
+
+                MDLabel:
+                    text: " ***notice:****we do not take any responsibility of any outcome of using Global-Watch. Make your own consideration!"
+
+                    theme_text_color: "Custom"
+                    text_color: "red"
+                    font_size: app.get_font_size("wanted_label")
+                    font_name: "gui/fonts/WANTED2.ttf"
+        MDIconButton:
+            icon: "map"
+            pos_hint: {"center_x": .05, "center_y": .9}
+            on_press:
+                app.return_main_menu()
+
+
+
+
+
+
+
+<AddWantedScreen>:
+    id:AddWantedScreen
+    name: "AddWantedScreen"
+
+    MDFloatLayout:
+
+
+        MDLabel:
+            text: "WANTED"
+            pos_hint : {"center_x":0.55,"center_y":.9}
+            theme_text_color: "Custom"
+            text_color: "white"#172/255,40/255,0,0.9
+            size_hint: .5,.1
+            font_size: app.get_font_size("wanted")
+            font_name: "gui/fonts/WANTED2.ttf"
+
+
+
+        MDTextField:
+            id: full_name
+            color_mode: 'custom'
+            hint_text: "Enter the wanted's full name here"
+            pos_hint : {"center_x":.5,"center_y":.75}
+            size_hint: .4,.12
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+            helper_text: ""
+            helper_text_mode: "on_error"
+
+        MDLabel:
+            text: "FULL NAME:"
+            pos_hint : {"center_x":.2,"center_y":.75}
+            theme_text_color: "Custom"
+            text_color: "white"
+            size_hint: .2,.1
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+
+
+
+        MDTextField:
+            id: crimes
+            multiline: True
+            color_mode: 'custom'
+            hint_text: "Enter the crimes he committed "
+            pos_hint : {"center_x":.5,"center_y":.6}
+            size_hint: .4,.2
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+            helper_text: ""
+            helper_text_mode: "on_error"
+
+
+        MDLabel:
+            text: "CRIMES:"
+            pos_hint : {"center_x":.2,"center_y":.6}
+            theme_text_color: "Custom"
+            text_color:"white"
+            size_hint: .2,.1
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+
+        MDTextField:
+            id: danger_level
+            icon_right: "bomb"
+            hint_text: "On a scale from 1 to 10 (10 highest)"
+            color_mode: 'custom'
+            pos_hint : {"center_x":.5,"center_y":.45}
+            size_hint: .4,.12
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+            max_text_length: 2
+
+            helper_text: ""
+            helper_text_mode: "on_error"
+
+        MDLabel:
+
+            text: "DANGER LEVEL:"
+            pos_hint : {"center_x":.2,"center_y":.45}
+            theme_text_color: "Custom"
+            text_color: "red"
+            size_hint: .2,.1
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+
+
+
+        MDTextField:
+            id: bounty
+            hint_text: "Amount of money you offer on his head"
+            color_mode: 'custom'
+            pos_hint : {"center_x":.55,"center_y":.3}
+            size_hint: .55,.12
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+
+            helper_text: ""
+            helper_text_mode: "on_error"
+
+
+        MDLabel:
+
+            text: "BOUNTY$:"
+            pos_hint : {"center_x":.2,"center_y":.3}
+            theme_text_color: "Custom"
+            text_color: "white"
+            size_hint: .2,.1
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+
+
+
+
+
+
+        BoxLayout:
+            orientation:"horizontal"
+            padding: 5
+            spacing:10
+            pos_hint : {"center_x":0.5,"center_y":.1}
+            size_hint: 1,0.2
+            MDRectangleFlatIconButton :
+                icon: "file-image-plus"
+                theme_text_color: "Custom"
+                text_color: "white"
+                line_color: "white"
+                theme_icon_color: "Custom"
+                icon_color: "orange"
+                font_name: "gui/fonts/WANTED2.ttf"
+                font_size: app.get_font_size("wanted_label")
+
+                text : 'Add picture from gallery'
+
+                on_press:
+                    root.clear_picture_field()
+                    root.open_file_manger()
+
+
+            MDRectangleFlatIconButton :
+                icon: "camera-plus"
+                theme_text_color: "Custom"
+                text_color: "white"
+                line_color: "white"
+                theme_icon_color: "Custom"
+                icon_color: "orange"
+                font_name: "gui/fonts/WANTED2.ttf"
+                font_size: app.get_font_size("wanted_label")
+
+                text : 'Take a picture'
+
+
+                on_press:
+                    root.clear_picture_field()
+                    root.manager.transition.direction = 'down'
+                    root.manager.transition.duration = 1
+                    root.manager.current = 'TakePicture'
+
+
+
+
+
+
+
+            MDRectangleFlatIconButton :
+                theme_text_color: "Custom"
+                text_color: "white"
+                line_color: "white"
+                theme_icon_color: "Custom"
+
+                font_name: "gui/fonts/WANTED2.ttf"
+                font_size: app.get_font_size("wanted_label")
+                icon: "tray-arrow-up"
+                text : 'submit'
+
+                on_press:
+
+
+                    app.send_bounty()
+
+
+            MDRectangleFlatIconButton :
+                theme_text_color: "Custom"
+                text_color: "white"
+                line_color: "white"
+                theme_icon_color: "Custom"
+                icon: "delete"
+                font_name: "gui/fonts/WANTED2.ttf"
+                font_size: app.get_font_size("wanted_label")
+
+                text : 'clear'
+
+                on_press:
+                    app.clear()
+
+        MDLabel:
+            pos_hint : {"center_x":.5,"center_y":.13}
+            size_hint: 0.6,.1
+            id: picture_error
+            text: ""
+            theme_text_color: "Custom"
+            text_color: "red"
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+        MDLabel:
+            pos_hint : {"center_x":.4,"center_y":.2}
+            size_hint: 0.6,.1
+            id: picture_name
+            text: "picture:"
+            theme_text_color: "Custom"
+            text_color: "white"
+            font_size: app.get_font_size("wanted_label")
+            font_name: "gui/fonts/WANTED2.ttf"
+        MDIconButton:
+            icon: "map"
+            pos_hint: {"center_x": .05, "center_y": .9}
+            on_press:
+                root.manager.transition.direction = 'down'
+                root.manager.transition.duration = 1
+                root.manager.current = 'Map'
