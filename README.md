@@ -67,16 +67,3 @@ The system utilizes **two SQLite databases:**
 🖼️ **Live Camera Feed with Map Integration:**  
 ![Criminal Detection Map](criminalIMG.jpg)  
 
----
-
-## 🚀 **Future Improvements**
-- Implement **cloud database storage** for remote access.
-- Integrate **AI-powered face tracking** for improved detection.
-- Develop a **mobile app** for real-time alerts.
-
----
-
-## 📜 **Conclusion**
-This project showcases **advanced facial recognition**, **secure networking**, and **real-time monitoring**. It demonstrates expertise in **cybersecurity, database management, and AI-driven image processing**. 💡
-
-📩 **For any queries or contributions, feel free to reach out!** 🚀
