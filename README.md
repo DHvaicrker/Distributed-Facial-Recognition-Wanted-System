@@ -3,6 +3,9 @@
 ## 📌 **Project Overview**
 This project is a **facial recognition security system** designed to identify wanted individuals using real-time camera footage. The system utilizes a secure server-client architecture, encrypted data transmission, and an interactive GUI for seamless operation.
 
+🖼️ **Server-Side GUI:**  
+![Server-Side GUI](WorldGUI.jpg)  
+
 ---
 
 ## 🛠 **Technologies & Libraries Used**
@@ -38,26 +41,15 @@ This project is a **facial recognition security system** designed to identify wa
 - **DDoS Mitigation** – Throttles new user account creation to prevent database flooding.
 - **Local & Server-Side Storage** – Suspect images and login credentials are stored securely.
 
+🖼️ **Add Wanted Person Page:**  
+![Add Wanted Person](WantedPage.jpg)  
+
 ---
 
 ## 📁 **Database Structure**
 The system utilizes **two SQLite databases:**
 1. **Wanted Persons Database** – Stores facial images and names of suspects.
 2. **User Credentials Database** – Manages login credentials with encrypted passwords.
-
----
-
-## 🎨 **Graphical User Interface (GUI)**
-The project features a **modern and user-friendly GUI** built using **KivyMD**. Below are placeholders for screenshots of the main interface:
-
-🖼️ **Server-Side GUI:**
-*(Insert image here)*
-
-🖼️ **Add Wanted Person Page:**
-*(Insert image here)*
-
-🖼️ **Live Camera Feed with Map Integration:**
-*(Insert image here)*
 
 ---
 
@@ -72,6 +64,11 @@ The project features a **modern and user-friendly GUI** built using **KivyMD**. 
 
 ---
 
+🖼️ **Live Camera Feed with Map Integration:**  
+![Criminal Detection Map](criminalIMG.jpg)  
+
+---
+
 ## 🚀 **Future Improvements**
 - Implement **cloud database storage** for remote access.
 - Integrate **AI-powered face tracking** for improved detection.
@@ -83,4 +80,3 @@ The project features a **modern and user-friendly GUI** built using **KivyMD**. 
 This project showcases **advanced facial recognition**, **secure networking**, and **real-time monitoring**. It demonstrates expertise in **cybersecurity, database management, and AI-driven image processing**. 💡
 
 📩 **For any queries or contributions, feel free to reach out!** 🚀
-
